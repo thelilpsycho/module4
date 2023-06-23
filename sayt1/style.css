@@ -1,0 +1,23 @@
+h1 {
+    background: rgb(198, 228, 66);
+}
+
+.par-1 {
+    background: pink;
+    font-size:22px;
+    color:darkmagenta;
+}
+
+.par-2 {
+    border: 5px solid burlywood;
+    border-radius: 10px;
+    font-size: 20px;
+    margin-bottom: 60px;
+    padding-bottom: 60px;
+}
+
+.par-3 {
+    font-weight: bold;
+    font-size: 20px;
+    font-family:'Courier New', Courier, monospace;
+}
