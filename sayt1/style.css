@@ -21,3 +21,10 @@ h1 {
     font-size: 20px;
     font-family:'Courier New', Courier, monospace;
 }
+
+.par-dz {
+    font-weight: itallic;
+    text-align: center;
+    font-size: 24px;
+    text-shadow: 3px -5px 4px green;
+}
