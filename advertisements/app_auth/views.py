@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.contrib.auth import authenticate, login, logout
 
+from .forms import ExtendedUserCreationForm
 
 def profile_view(request):
     return render(request, 'app_auth/profile.html')
@@ -11,7 +12,7 @@ def login_view(request):
     redirect_url=reverse('profile')
 
     if request.method == 'GET':
-        if request.user.is_authentificated:
+        if request.user.is_authenticated:
             return redirect(redirect_url)
         else:
             return render(request, 'app_auth/login.html')
@@ -27,7 +28,19 @@ def login_view(request):
     return render(request, 'app_auth/login.html')
 
 def register_view(request):
-    return render(request, 'app_auth/login.html')
+    if request.method=="POST":
+        form= ExtendedUserCreationForm(request.POST)
+        if form.is_valid():
+            user=form.save()
+            user=authenticate(username=user.username, pssword=request.POST.get('password1'))
+            login(request,user)
+            return redirect(reverse('profile'))
+        
+    else:
+        form=ExtendedUserCreationForm()
+    context={'form':form}
+    
+    return render(request, 'app_auth/register.html',context)
 
 def logout_view(request):
 
